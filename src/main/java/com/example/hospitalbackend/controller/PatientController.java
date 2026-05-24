@@ -1,34 +1,28 @@
 package com.example.hospitalbackend.controller;
 
 import com.example.hospitalbackend.model.Patient;
-
 import com.example.hospitalbackend.repository.PatientRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-
-@CrossOrigin(origins = "http://localhost:5173")
-
+@RequestMapping("/patients")
+@CrossOrigin(origins = "*")
 public class PatientController {
 
     @Autowired
+    private PatientRepository repository;
 
-    PatientRepository repository;
-
-    @GetMapping("/patients")
-
+    @GetMapping
     public List<Patient> getPatients() {
 
         return repository.findAll();
     }
 
-    @PostMapping("/patients")
-
+    @PostMapping
     public Patient addPatient(
             @RequestBody Patient patient
     ) {
@@ -36,8 +30,7 @@ public class PatientController {
         return repository.save(patient);
     }
 
-    @DeleteMapping("/patients/{id}")
-
+    @DeleteMapping("/{id}")
     public void deletePatient(
             @PathVariable String id
     ) {

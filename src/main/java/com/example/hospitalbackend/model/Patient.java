@@ -5,7 +5,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "PATIENTS")
+@Table(name = "patients")
 public class Patient {
 
     @Id
@@ -16,16 +16,6 @@ public class Patient {
     private int days;
 
     public Patient() {
-    }
-
-    public Patient(
-            String patientId,
-            String wardType,
-            int days) {
-
-        this.patientId = patientId;
-        this.wardType = wardType;
-        this.days = days;
     }
 
     public String getPatientId() {
